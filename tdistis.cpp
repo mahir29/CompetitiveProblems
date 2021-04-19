@@ -21,7 +21,7 @@ int main()
         if(n==1){
             if(x==1){
                 cout<<"YES"<<endl;
-                cout<<"1"<<endl;
+                cout<<1<<endl;
             }
             else
             cout<<"NO"<<endl;
@@ -29,7 +29,7 @@ int main()
         }
         ll pos,even=1,odd=n-1;
         bool res=0;
-        for(int i=1;i<n;i++){
+        while(odd>=1){
             pos=even*odd*2;
             if(pos==y){
                 res=1;
@@ -42,12 +42,13 @@ int main()
             cout<<"NO"<<endl;
             continue;
         }
+        cout<<"YES"<<endl;
         cout<<n<<endl;
         for(int i=1;i<=odd;i++){
-            cout<<"1"<<" "<<i+1<<endl;
+            cout<<1<<" "<<i+1<<endl;
         }
         for(int i=1;i<even;i++){
-            cout<<"2"<<" "<<odd+i+1<<endl;
+            cout<<2<<" "<<odd+i+1<<endl;
         }
 
     }
