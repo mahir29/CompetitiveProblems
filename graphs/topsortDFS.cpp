@@ -46,7 +46,6 @@ int main()
     {
         cin >> u >> v;
         adj[u].push_back(v);
-        adj[u].push_back(v);
     }
     Solution S;
     stack<int> B = S.dfsearch(n, adj);

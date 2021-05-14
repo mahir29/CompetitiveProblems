@@ -54,7 +54,7 @@ int main()
     {
         cin >> u >> v;
         adj[u].push_back(v);
-        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
     Solution S;
     bool B = S.isBipartite(n, adj);

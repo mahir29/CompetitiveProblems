@@ -56,7 +56,6 @@ int main()
     {
         cin >> u >> v;
         adj[u].push_back(v);
-        adj[u].push_back(v);
     }
     Solution S;
     bool B = S.cycleDetect(n, adj);

@@ -49,7 +49,7 @@ int main()
     {
         cin >> u >> v;
         adj[u].push_back(v);
-        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
     Solution S;
     vector<int> B = S.bfs(n, adj);
