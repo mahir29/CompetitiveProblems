@@ -38,7 +38,7 @@ public:
     vector<int> shortestDist(int src, int v, vector<pair<int, int>> adj[])
     {
         vector<int> dist(v + 1, 1e18);
-        vector<int> vis(v + 1, 0);
+    
         dist[src] = 0;
 
         stack<int> q = topsort(v, adj);
