@@ -24,7 +24,7 @@ int findPar(int node, vector<int> &parent)
     if (node == parent[node])
         return node;
 
-    return parent[node] = findPar(parent[node], parent); //path compression
+    return parent[node] = findPar(parent[node], parent); //path
 }
 
 void unionn(int a, int b, vector<int> &parent, vector<int> &rank)
