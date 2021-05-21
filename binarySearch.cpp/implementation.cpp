@@ -11,8 +11,7 @@ int binarySearch(vector<int> a,int n){
 
         if(a[mid]==n)
         return mid;
-        else if(a[mid]<n){
-            start=mid+1;
+        else if(a[mid]<n){ start=mid+1;
         }
         else{
             end=mid-1;
