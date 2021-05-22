@@ -54,7 +54,7 @@ int main()
     {
         cin >> u >> v;
         adj[u].push_back(v);
-        indegree[u]++;
+        indegree[v]++;
     }
     Solution S;
     vector<int> B = S.bfs(n, adj, indegree);
