@@ -20,9 +20,8 @@ int partition(vi &v, int s, int e)
             swap(v[i],v[ptr]);
             ptr++;
         }
-
-        swap(v[s],v[ptr-1]);
     }
+    swap(v[s],v[ptr-1]);
 
     return ptr-1;
 }
