@@ -16,7 +16,7 @@ int partition(vi &v, int s, int e)
     int pivot=v[s];
     int ptr=s+1;
     for(int i=s+1;i<e;i++){
-        if(v[i]<v[s]){
+        if(v[i]<pivot){
             swap(v[i],v[ptr]);
             ptr++;
         }
