@@ -18,7 +18,6 @@ void backtrack(vs &ans,string curr,int open,int close,int n){
         ans.push_back(curr);
     }
 
-
     if(open<n){
         curr.append("(");
         backtrack(ans,curr,open+1,close,n);
