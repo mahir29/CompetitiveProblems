@@ -14,7 +14,7 @@ using namespace std;
 #define w(x) int x; cin>>x; while(x--)
 
 
-int Solution::solve(string A) {
+int solve(string A) {
     map<char,int> m;
     
     for(int i=0;i<A.size();i++){
