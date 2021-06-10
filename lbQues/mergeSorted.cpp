@@ -13,8 +13,25 @@ using namespace std;
 #define mii map<int,int>
 #define w(x) int x; cin>>x; while(x--)
 
+//merge two sorted arrays in O(1) space
 
-//move negative elements to one side
+void merge(int arr1[], int arr2[], int n, int m) {
+	    
+	    int j=0,i=0,k=n-1;
+	    // code here
+	    while(i<=k && j<m){
+	        if(arr1[i]<arr2[j]){
+	            i++;
+	        }
+	        else {
+	            swap(arr2[j++],arr1[k--]);
+	        }
+	    }
+	    
+	    sort(arr1,arr1+n);
+	    sort(arr2,arr2+m);
+	    
+	}
 
 signed main(){
     ios_base::sync_with_stdio(false);
@@ -22,25 +39,6 @@ signed main(){
     cout.tie(0);
 
     //Write your code here
-std::vector<int> v;
-	int n;
-	std::cin >>n;
-	int j;
-	for (int i = 0; i <n ; i++) {
-	    /* code */
-	    cin>>j;
-	    v.push_back(j);
-	}
-	int ptr=0;
-	for(int i=0;i<n;i++){
-	    if(v[i]<0){
-	        swap(v[ptr],v[i]);
-	        ptr++;
-	    }
-	}
-	for (int i = 0; i <n ; i++) {
-	    /* code */
-	    cout<<v[i]<<" ";
-	}
+
     return 0;
 }
