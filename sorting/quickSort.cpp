@@ -13,17 +13,17 @@ using namespace std;
 
 int partition(vi &v, int s, int e)
 {
-    int pivot=v[s];
-    int ptr=s+1;
-    for(int i=s+1;i<e;i++){
-        if(v[i]<pivot){
-            swap(v[i],v[ptr]);
+    int pivot=v[e];
+    int ptr=s;
+    for(int i=s;i<e-1;i++){
+        if(v[i]<=pivot){
+            swap(v[ptr],v[i]);
             ptr++;
         }
     }
-    swap(v[s],v[ptr-1]);
+    swap(pivot,v[ptr]);
 
-    return ptr-1;
+    return ptr;
 }
 
 void quickSort(vi &v, int s, int e)
