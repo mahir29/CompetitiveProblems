@@ -13,8 +13,10 @@ using namespace std;
 #define mii map<int,int>
 #define w(x) int x; cin>>x; while(x--)
 
-int countSubsets(int a[],int n,int s){
-     bool t[n+1][s+1];
+//find the min diff of sum of two subsets that can be obtained from the array
+
+vi subset(int a[],int n,int s){
+    bool t[n+1][s+1];
 
     for(int i=0;i<n+1;i++){
         for(int j=0;j<s+1;j++){
@@ -31,7 +33,7 @@ int countSubsets(int a[],int n,int s){
     for(int i=1;i<n+1;i++){
         for(int j=1;j<s+1;j++){
             if(a[i-1]<=s){
-                t[i][j]=t[i-1][j-a[i-1]] + t[i-1][j];
+                t[i][j]=t[i-1][j-a[i-1]] || t[i-1][j];
             }
             else{
                 t[i][j]=t[i-1][j];
@@ -39,7 +41,35 @@ int countSubsets(int a[],int n,int s){
         }
     }
 
-    return t[n][s];
+    vi v;
+
+    for(int i=0;i<(s+1)/2;i++){
+        if(t[n][i]){
+            v.push_back(i);
+        }
+    }
+
+    return v;
+}
+
+int minSubset(int a[],int n){
+     int sum=0;
+     for(int i=0;i<n;i++){
+         sum+=a[i];
+     }
+
+     vi v;
+     v=subset(a,n,sum);
+
+     int mn=INT_MAX;
+
+     for(int i=0;v.size();i++){
+         int diff=sum-(2*v[i]);
+         mn=min(mn,diff);
+     }
+
+     return mn;
+    
 }
 
 signed main(){

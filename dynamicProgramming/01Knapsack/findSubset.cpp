@@ -41,7 +41,7 @@ bool subset(int a[],int n,int s){
         }
     }
 
-    return t[n+1][s+1];
+    return t[n][s];
 }
 
 signed main(){
