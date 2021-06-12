@@ -13,8 +13,11 @@ using namespace std;
 #define mii map<int,int>
 #define w(x) int x; cin>>x; while(x--)
 
-int rodCutting(int a[],int price[],int n,int sum){
-    int t[n+1][n+1];
+//l->length of rod
+//n->number of possible sizez of rod that we can cut
+
+int rodCutting(int a[],int price[],int n,int l){
+    int t[n+1][l+1];
 
     for(int i=0;i<n+1;i++){
         for(int j=0;j<n+1;j++){
@@ -28,8 +31,8 @@ int rodCutting(int a[],int price[],int n,int sum){
     }
 
     for(int i=1;i<n+1;i++){
-        for(int j=1;j<n+1;j++){
-            if(a[i-1]<=sum){
+        for(int j=1;j<l+1;j++){
+            if(a[i-1]<=l){
                 t[i][j]=max(price[i-1]+t[i][j-a[i-1]],t[i-1][j]);
             }
             else{
@@ -38,7 +41,7 @@ int rodCutting(int a[],int price[],int n,int sum){
         }
     }
 
-    return t[n][n];
+    return t[n][l];
 }
 
 signed main(){
