@@ -35,7 +35,6 @@ int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
 	    
 	    return ans;
 	}
-
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
