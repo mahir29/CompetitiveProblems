@@ -30,9 +30,9 @@ double findMedianSortedArrays(const vector<int> &A, const vector<int> &B)
             return 1.0*max(maxLeftX,maxLeftY);
         }
         else if(maxLeftX>minRightY)
-        high=high+1;
+        high=partX-1;
         else
-        low=low-1;
+        low=partX+1;
     }
 
     return -1.0;
