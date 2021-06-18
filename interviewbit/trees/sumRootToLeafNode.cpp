@@ -26,26 +26,37 @@ struct TreeNode
 
 //find sum of all path nodes from root to leaf
 
-int treeSum(TreeNode *A, int val)
+void util(TreeNode *A, int curr, int &res)
+
+{
+
+    if (A == NULL)
+        return;
+
+    curr = curr * 10 + A->val;
+    curr %= 1003;
+    if (!A->left && !A->right)
+    {
+        res += curr;
+        res %= 1003;
+        curr = 0;
+        return;
+    }
+
+    util(A->left, curr, res);
+    util(A->right, curr, res);
+}
+
+int sumNumbers(TreeNode *A)
 {
     if (A == NULL)
     {
         return 0;
     }
+    int res = 0;
+    util(A, 0, res);
 
-    val = val * 10 + A->val;
-
-    if (A->right == NULL && A->left == NULL)
-    {
-        return val;
-    }
-
-    return treeSum(A->left, val) + treeSum(A->right, val);
-}
-
-int sumNumbers(TreeNode *A)
-{
-    return treeSum(A, 0) % 1003;
+    return res;
 }
 
 signed main()
