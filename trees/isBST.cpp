@@ -19,10 +19,7 @@ class node
     int data;
     node* left;
     node* right;
-     
-    /* Constructor that allocates
-    a new node with the given data
-    and NULL left and right pointers. */
+
     node(int data)
     {
         this->data = data;

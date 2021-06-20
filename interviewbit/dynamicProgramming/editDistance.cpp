@@ -13,34 +13,39 @@ using namespace std;
 #define mii map<int,int>
 #define w(x) int x; cin>>x; while(x--)
 
-//top down method to solve dp problem
+int lcs(string A,string B){
+    int n=A.size();
+    int m=B.size();
 
-
-
-int knapsack(int w[],int v[],int n,int wt){
-
-    int t[n+1][wt+1];
+    int t[n+1][m+1];
 
     for(int i=0;i<n+1;i++){
-        for(int j=0;j<wt+1;j++){
-            if(i==0||j==0)
-            t[i][j]=0;
-        }
+        t[i][0]=i;
+    }
+
+    for(int j=0;j<m+1;j++){
+        t[0][j]=j;   
     }
 
     for(int i=1;i<n+1;i++){
-        for(int j=1;j<wt+1;j++){
-
-            if(w[i-1]<=j){
-                t[i][j]=max(v[i-1]+t[i-1][j-w[i-1]],t[i-1][j]);
+        for(int j=1;j<m+1;j++){
+            if(A[i-1]==B[j-1]){
+                t[i][j]=t[i-1][j-1];
             }
             else{
-                t[i][j]=t[i-1][j];
+                t[i][j]=1+min(t[i-1][j-1],min(t[i-1][j],t[i][j-1]));
             }
         }
     }
 
+    return t[n][m];
+}
 
+
+int minDistance(string A, string B) {
+    int x=lcs(A,B);
+    return x;
+    
 }
 
 signed main(){
