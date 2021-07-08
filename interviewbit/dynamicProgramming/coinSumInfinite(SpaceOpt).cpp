@@ -16,38 +16,36 @@ using namespace std;
     cin >> x; \
     while (x--)
 
-//dp[val][diff] represent the number of elements of AP whose last element is val
-//and difference is diff
-
-int solve(const vector<int> &A)
+int coinchange2(vector<int> &A, int B)
 {
     int n = A.size();
 
-    if (n <= 2)
-        return n;
+    int dp[2][B + 1];
 
-    vector<unordered_map<int, int>> dp(n);
+    bool bi;
 
-    int max_len = 2;
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n + 1; i++)
     {
-        for (int j = i + 1; j < n; j++)
+        bi = i & 1;
+        for (int j = 0; j < B + 1; j++)
         {
-            int diff = A[j] - A[i];
-            if (dp[i].find(diff) != dp[i].end())
+            if (j == 0)
+                dp[bi][j] = 1;
+            else if (i == 0)
+                dp[bi][j] = 0;
+
+            else if (A[i - 1] <= j)
             {
-                dp[j][diff] = dp[i][diff] + 1;
+                dp[bi][j] = dp[bi][j - A[i - 1]] % 1000007 + dp[1 - bi][j] % 1000007;
             }
             else
             {
-                dp[j][diff] = 2;
+                dp[bi][j] = dp[1 - bi][j] % 1000007;
             }
-            max_len = max(max_len, dp[j][diff]);
         }
     }
 
-    return max_len;
+    return dp[bi][B] % 1000007;
 }
 
 signed main()
