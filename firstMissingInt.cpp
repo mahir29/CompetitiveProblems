@@ -13,21 +13,24 @@ using namespace std;
 #define mii map<int,int>
 #define w(x) int x; cin>>x; while(x--)
 
-vi solve(int n){
-    vector<vi> dp(n);
-    for(int i=0;i<n;i++){
-        dp[i].resize(i+1);
-        dp[i][0]=1;
-        dp[i][i]=1;
-    }
 
-    for(int i=1;i<n;i++){
-        for(int j=1;j<n;j++){
-            dp[i][j]=dp[i-1][j]+dp[i-1][j-1];
+int firstMissingPositive(vector<int> &A) {
+    int n=A.size();
+
+    for(int i=0;i<A.size();i++){
+        if(A[i]>0 && A[i]<n){
+            int pos=A[i]-1;
+            if(A[i]!=A[pos]){
+                swap(A[i],A[pos]);
+                i--;
+            }
         }
+
     }
 
-
+    for(int i=0;i<n;i++){
+        if(A[i]!=i+1) return (i+1);
+    }
 }
 signed main(){
     ios_base::sync_with_stdio(false);
