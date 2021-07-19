@@ -13,29 +13,26 @@ using namespace std;
 #define mii map<int,int>
 #define w(x) int x; cin>>x; while(x--)
 
-void solve(vector<vi> &mat){
-    int r=mat.size();
-    int c=mat[0].size();
-    bool col=true;
+vi solve(vi &a){
+    int ind1,ind2=0;
+    int n=a.size();
 
-    for(int i=0;i<r;i++){
-        if(mat[i][0]==0) col=false;
-        for(int j=1;j<c;j++){
-            if(mat[i][j]==0){
-                mat[i][0]=0;
-                mat[0][j]=0;
-            }
+    for(int i=n-2;i>=0;i--){
+        if(a[i]>a[i+1]){
+            ind1=i;
+            break;
         }
     }
 
-    for(int i=r-1;i>=0;i--){
-        for(int j=c-1;j>=0;j--){
-            if(mat[i][0]==0 || mat[0][j]==0) mat[i][j]=0;
-        }
-        if(col==false){
-             mat[i][0]=0;
+    for(int i=ind1+1;i<n;i++){
+        if(a[ind1]<a[ind2]){
+            ind2=i;
         }
     }
+
+    swap(a[ind1],a[ind2]);
+
+
 }
 
 signed main(){
