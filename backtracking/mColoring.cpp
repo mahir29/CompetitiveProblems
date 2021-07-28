@@ -35,13 +35,13 @@ bool solve(int node, vi adj[], int m, int n, vi &color)
 
     for (int i = 0; i < m; i++)
     {
-        color[node] = i;
+        
         if (isSafe(node, adj, color, i))
         {
-            return true;
-        }
-        else
-        {
+            color[node] = i;
+            if(solve(node+1,adj,m,n,color)){
+                return true;
+            }
             color[node] = 0;
         }
     }
